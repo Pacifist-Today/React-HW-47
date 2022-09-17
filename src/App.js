@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import FileStructures from "./components/FileStructures";
+import disk from "./local disk.svg"
+import directories from "./directories.json";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return(
+        <div>
+            <ul className="local_disk">
+                <div className="localDisk">
+                    <img src={disk} alt="" className="localDisk__img"/>
+                    <span className="localDisk__span"> Local Disk</span>
+                    {}
+                </div>
+                <ul>
+                {
+                    directories.map((value, index) => {
+                        return <FileStructures value={value} key={index}/>
+                    })
+                }
+                </ul>
+            </ul>
+        </div>
+    )
 }
 
 export default App;
